@@ -37,7 +37,8 @@ class Database(object):
         entry = attack_event.event_dict()
 
         entry['source'] = (entry['source'][0] + ":" + str(entry['source'][1]))
-
+        entry['attack_type'] = attack_event.matched_pattern
+        
         try:
             conn = self.engine.connect()
             conn.execute(self.events_table.insert(entry))
@@ -80,6 +81,7 @@ class Database(object):
                                   Column('source', String(30)),
                                   Column('request_url', String(500)),
                                   Column('request_raw', TEXT),
+                                  Column('attack_type', TEXT), # instead of attack_type, you can name it matched_pattern. refer line #40
                                   Column('pattern', String(20)),
                                   Column('filename', String(500)),
         )
