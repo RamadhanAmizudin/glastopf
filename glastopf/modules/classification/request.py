@@ -71,10 +71,12 @@ class Classifier(object):
 
     def select_pattern(self, matched_patterns):
         # TODO: add some logic
+        # add *some* logic
         matched_pattern = matched_patterns[0]
         if len(matched_patterns) > 1:
-            if matched_patterns[0] == "unknown":
-                matched_pattern = matched_patterns[1]
+            #if matched_patterns[0] == "unknown":
+            #    matched_pattern = matched_patterns[1]
+            matched_pattern = matched_patterns[-1]
         else:
             matched_pattern = matched_patterns[0]
         return matched_pattern
